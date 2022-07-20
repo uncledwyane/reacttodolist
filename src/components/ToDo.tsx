@@ -3,7 +3,37 @@ import ToDoAdd from "./ToDoAdd";
 import ToDoItem from "./ToDoItem";
 
 
-class ToDo extends React.Component {
+// type Todo = Readonly<{
+//     id: number,
+//     text: string,
+//     done: boolean
+// }>
+
+
+// function completeAll(todos: readonly Todo[]): Todo[]{
+    
+// }
+
+
+type addObj = {
+    title: string,
+    desc: string
+}
+
+type indoObj = addObj & {
+    finished: boolean,
+    id: number
+}
+
+interface IState {
+    operateShow: boolean,
+    operateMode: string,
+    operateObj: addObj,
+    indo: indoObj,
+    finished: Array<indoObj>
+}
+
+class ToDo extends React.Component<IState> {
     constructor(props) {
         super(props);
     }
@@ -39,7 +69,7 @@ class ToDo extends React.Component {
         ],
         finished: []
     }
-    handleDisplay = (isShow, type, obj) => {
+    handleDisplay = (isShow: boolean, type: string, obj?: object) => {
         console.debug('+++handleDisplay, isShow: ', isShow, ' ,type: ', type)
         this.setState({
             operateShow: isShow,
@@ -49,7 +79,7 @@ class ToDo extends React.Component {
     } 
     handleTodoFinished = (e) => {
         let tempIndo = this.state.indo.slice()
-        let tempArr:Array<Object> = []
+        let tempArr:Array<indoObj> = []
         tempArr[0] = tempIndo[e]
         tempArr[0].finished = true
         tempIndo.splice(e, 1)
@@ -64,7 +94,7 @@ class ToDo extends React.Component {
     }
     handleTodoUnFinished = (e) => {
         let tempFinished = this.state.finished.slice()
-        let tempArr = []
+        let tempArr: Array<indoObj> = []
         tempArr[0] = tempFinished[e]
         tempArr[0].finished = false
         this.setState({
@@ -80,7 +110,7 @@ class ToDo extends React.Component {
      * @param {string} type 处理类型  添加和修改
      * @param {object} todoObj 处理的对象 
      */
-    handleAddTodo = (type, todoObj) => {
+    handleAddTodo = (type: string, todoObj: indoObj) => {
         if (type === 'add') {
             // 添加，直接放到indo数组里面
             this.state.indo.push(todoObj)

@@ -1,6 +1,28 @@
-import React from "react";
+import * as React from "react";
 
-class ToDoAdd extends React.Component {
+type addObj = {
+    title: string,
+    desc: string,
+    id?: number,
+    finished?: boolean
+}
+
+interface IProps {
+    mode: string,
+    operateAddObj: Object,
+    operateEditObj: Object,
+    todo: addObj,
+    onOperateTodo(e:string, t: Object): void,
+    onDisplayChange(event: React.MouseEvent<HTMLDivElement>): void
+}
+
+interface IState {
+    operateAddObj: addObj,
+    operateEditObj: addObj
+}
+
+
+class ToDoAdd extends React.Component<IProps, IState> {
     constructor(props) {
         super(props);
         this.state = {

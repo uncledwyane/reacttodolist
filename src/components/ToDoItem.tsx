@@ -1,12 +1,12 @@
 import * as React from "react";
 
 interface IProps {
-    desc: String;
-    title: String;
-    finished: Boolean;
-    onClick: Function;
-    onFinished: Function;
-    onUnFinished: Function;
+    desc: String,
+    title: String,
+    finished: Boolean,
+    onClick(event: React.MouseEvent<HTMLDivElement>): void,
+    onFinished(): void,
+    onUnFinished(): void
 }
 
 class ToDoItem extends React.Component<IProps> {
@@ -19,7 +19,7 @@ class ToDoItem extends React.Component<IProps> {
         e ? this.props.onFinished() : this.props.onUnFinished()
     }
     render() {
-        let checkBtn = null;
+        let checkBtn:React.ReactNode = null;
         if (this.props.finished) {
             checkBtn = <span className="check_indo"></span>
         } else {

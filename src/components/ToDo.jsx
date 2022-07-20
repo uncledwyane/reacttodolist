@@ -1,6 +1,6 @@
 import React from "react";
 import ToDoAdd from "./ToDoAdd";
-import ToDoItem from "./ToDoItem";
+import ToDoItem from "./ToDoItem.tsx";
 
 
 class ToDo extends React.Component {
