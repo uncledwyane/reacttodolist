@@ -5,7 +5,7 @@ body{
   padding: 10px;
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%);
+  background-image: linear-gradient(to right bottom, #ffffff 0%, #d9dee4 100%);
 }
 
 .App {

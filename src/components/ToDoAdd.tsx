@@ -7,13 +7,19 @@ type addObj = {
     finished?: boolean
 }
 
+type disChange = {
+    isShow: boolean,
+    type: string,
+    obj?: object
+}
+
 interface IProps {
     mode: string,
-    operateAddObj: Object,
-    operateEditObj: Object,
+    operateAddObj?: Object,
+    operateEditObj?: Object,
     todo: addObj,
     onOperateTodo(e:string, t: Object): void,
-    onDisplayChange(event: React.MouseEvent<HTMLDivElement>): void
+    onDisplayChange(isShow: boolean, type?: string, obj?: object): void
 }
 
 interface IState {

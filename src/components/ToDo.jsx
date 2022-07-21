@@ -13,27 +13,9 @@ class ToDo extends React.Component {
         operateObj: {title: '', desc: ''},  
         indo:[
             {
-                title: "做饭",
+                title: "ToDo",
                 finished: false,
-                desc: "这意味着用于我们 FancyButton 组件的 refs 实际上将被挂载到 LogProps 组件",
-                id: Math.round(Math.random() * 100000)
-            },
-            {
-                title: "洗衣服",
-                finished: false,
-                desc: "这意味着用于我们 FancyButton 组件的 refs 实际上将被挂载到 LogProps 组件",
-                id: Math.round(Math.random() * 100000)
-            },
-            {
-                title: "跑步",
-                finished: false,
-                desc: "这意味着用于我们 FancyButton 组件的 refs 实际上将被挂载到 LogProps 组件",
-                id: Math.round(Math.random() * 100000)
-            },
-            {
-                title: "打篮球",
-                finished: false,
-                desc: "这意味着用于我们 FancyButton 组件的 refs 实际上将被挂载到 LogProps 组件",
+                desc: "这是一个ToDo应用，由React+TypeScript开发",
                 id: Math.round(Math.random() * 100000)
             }
         ],

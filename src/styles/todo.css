@@ -88,9 +88,8 @@
     user-select: none;
 }
 .todo_edit_excute{
-    position: absolute;
+    position: relative;
     width: 100%;
-    bottom: 5px;
     height: 40px;
 }
 .todo_add_btn{
@@ -138,7 +137,7 @@
     border-left: none;
     border-right: none;
     border-bottom: 2px solid rgb(214, 214, 214);
-    background: rgb(237, 237, 237);
+    background: rgb(242,242,242,.5);
     font-size: 1rem;
     color: #717171;
     border-radius: 5px;

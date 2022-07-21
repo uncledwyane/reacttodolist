@@ -29,41 +29,23 @@ interface IState {
     operateShow: boolean,
     operateMode: string,
     operateObj: addObj,
-    indo: indoObj,
-    finished: Array<indoObj>
+    indo: indoObj[],
+    finished: indoObj[]
 }
 
 class ToDo extends React.Component<IState> {
     constructor(props) {
         super(props);
     }
-    public state = {
+    public state:IState = {
         operateShow: false,
         operateMode: 'add',
         operateObj: {title: '', desc: ''},  
         indo:[
             {
-                title: "做饭",
+                title: "ToDo",
                 finished: false,
-                desc: "这意味着用于我们 FancyButton 组件的 refs 实际上将被挂载到 LogProps 组件",
-                id: Math.round(Math.random() * 100000)
-            },
-            {
-                title: "洗衣服",
-                finished: false,
-                desc: "这意味着用于我们 FancyButton 组件的 refs 实际上将被挂载到 LogProps 组件",
-                id: Math.round(Math.random() * 100000)
-            },
-            {
-                title: "跑步",
-                finished: false,
-                desc: "这意味着用于我们 FancyButton 组件的 refs 实际上将被挂载到 LogProps 组件",
-                id: Math.round(Math.random() * 100000)
-            },
-            {
-                title: "打篮球",
-                finished: false,
-                desc: "这意味着用于我们 FancyButton 组件的 refs 实际上将被挂载到 LogProps 组件",
+                desc: "这是一个ToDo应用，由React+TypeScript开发",
                 id: Math.round(Math.random() * 100000)
             }
         ],
@@ -79,7 +61,7 @@ class ToDo extends React.Component<IState> {
     } 
     handleTodoFinished = (e) => {
         let tempIndo = this.state.indo.slice()
-        let tempArr:Array<indoObj> = []
+        let tempArr:indoObj[] = []
         tempArr[0] = tempIndo[e]
         tempArr[0].finished = true
         tempIndo.splice(e, 1)
@@ -117,10 +99,10 @@ class ToDo extends React.Component<IState> {
         } else {
             // 编辑
             // 先要根据是否完成来选择从那里扫描修改
-            let tempEditObj = null
+            let tempEditObj: indoObj
             if(todoObj.finished !== undefined && todoObj.finished) {
                 // 已完成的todo修改，既然是点的已完成的，那说明数组肯定不为空，不用做长度判断，直接遍历
-                this.state.finished.forEach(finishedTodo => {
+                this.state.finished.forEach((finishedTodo: indoObj) => {
                     if (finishedTodo.id === todoObj.id) {
                         tempEditObj = finishedTodo
                         for (var i in todoObj) {
