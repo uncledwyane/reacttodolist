@@ -57,6 +57,18 @@ class ToDo extends React.Component {
             finished: tempFinished
         })
     }
+
+    _setFindTodoByNewTodo = (todoArr, newTodo, type) => {
+        // debugger
+        todoArr.forEach(todo => {
+            if (todo.id === newTodo.id) {
+                for (var i in newTodo) {
+                    todo[i] = newTodo[i]
+                }
+            }
+        })
+    }
+
     /**
      * 
      * @param {string} type 处理类型  添加和修改
@@ -69,29 +81,12 @@ class ToDo extends React.Component {
         } else {
             // 编辑
             // 先要根据是否完成来选择从那里扫描修改
-            let tempEditObj = null
             if(todoObj.finished !== undefined && todoObj.finished) {
                 // 已完成的todo修改，既然是点的已完成的，那说明数组肯定不为空，不用做长度判断，直接遍历
-                this.state.finished.forEach(finishedTodo => {
-                    if (finishedTodo.id === todoObj.id) {
-                        tempEditObj = finishedTodo
-                        for (var i in todoObj) {
-                            finishedTodo[i] = todoObj[i]
-                        }
-                    }
-
-                })
+                this._setFindTodoByNewTodo(this.state.finished, todoObj, 'indo')
             } else if (todoObj.finished !== undefined && !todoObj.finished) {
                 // 找到未完成的todo
-                this.state.indo.forEach(finishedTodo => {
-                    if (finishedTodo.id === todoObj.id) {
-                        tempEditObj = finishedTodo
-                        for (var i in todoObj) {
-                            finishedTodo[i] = todoObj[i]
-                        }
-                    }
-
-                })
+                this._setFindTodoByNewTodo(this.state.indo, todoObj, 'finished')
             }
         }
     }
